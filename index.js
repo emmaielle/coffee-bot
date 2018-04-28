@@ -89,6 +89,20 @@ controller.hears('hello', 'direct_message', function (bot, message) {
     bot.reply(message, 'Hello!');
 });
 
+controller.hears(['coffee', 'cafe', 'café', 'Coffee', 'Coffee?', 'coffee?', '*coffee*', 'sup', 'give me coffee',
+    'Give me coffee'], 
+    ['direct_mention', 'mention', 'direct_message'], (bot, message) => {
+        bot.reply(message, 'beep bop...');
+        let chosen = 'no one';
+        let users = ['@emmaielle', '@coffee_bot'];
+        const random = Math.random();
+        // console.log(random);
+        let index = Math.floor(random*users.length);
+        // console.log(index);
+        chosen = users[index];
+        console.log(chosen);
+        bot.reply(message, `<${chosen}> your turn to make coffee!`);
+    })
 
 /**
  * AN example of what could be:
